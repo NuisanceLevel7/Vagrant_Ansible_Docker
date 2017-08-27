@@ -1,0 +1,10 @@
+---
+- name: Install Docker and Docker-Compose
+  hosts: docker-dev  
+  become: True  
+  tasks:    
+    - name: Copy install script      
+      copy: src=Files/docker-install.sh dest=/tmp mode=0755    
+
+    - name: Exec install script
+      command: sh /tmp/docker-install.sh

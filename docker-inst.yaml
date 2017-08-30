@@ -6,5 +6,8 @@
     - name: Copy install script      
       copy: src=Files/docker-install.sh dest=/tmp mode=0755    
 
+    - name: Sync the Docker build to the vm
+      file: state=directory path=/App mode=0755
+    - copy: src=Container/App.tar dest=/App/
     - name: Exec install script
       command: sh /tmp/docker-install.sh

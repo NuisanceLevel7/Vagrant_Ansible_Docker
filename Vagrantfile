@@ -6,6 +6,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "dockerdev" do |dockerdev|
     dockerdev.vm.box = "marcv81/xenial64"
+    dockerdev.vm.network "forwarded_port", guest: 8080, host: 80
     dockerdev.vm.provider :virtualbox do |vb|
           vb.customize ["modifyvm", :id, "--memory", "6144"]
     end
